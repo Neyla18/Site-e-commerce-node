@@ -6,3 +6,7 @@ export const homeView = (req, res) => {
 
     res.status(200).render("layout", { template: "home", data: randomProduct });
 };
+
+
+// déclaration d'une fonction middleware pour traiter les erreurs, on affiche l'objet data 
+// 

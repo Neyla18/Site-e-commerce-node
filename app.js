@@ -1,4 +1,4 @@
-import express from "express";
+const express = require('express')
 
 import getData from "./middlewares/getData.js";
 import router from "./router/index.js";

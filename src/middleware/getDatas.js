@@ -10,3 +10,4 @@ export default (req, res, next) => {
         next();
     });
 };
+// on initialise la fonction readFile pour lire le fichier json avec la gestion des  erreurs
