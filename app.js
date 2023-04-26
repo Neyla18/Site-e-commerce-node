@@ -1,20 +1,22 @@
-const express = require('express')
+import express from 'express'
 
-import getData from "./middlewares/getData.js";
-import router from "./router/index.js";
+import router from "./router/index.routes.js";
+import getDatas from "./middleware/getDatas.js";
+import getAddproduct from './middleware/getAddproduct.js';
 
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = 5000;
 
-app.set("views", "./views");
-app.set("view engine", "ejs");
+app.set("views", "./src/views").set("view engine", "ejs");
 
-app
-    .use(express.static("public"))
-    .use(getData)
+app.use(express.static("public"))
+    .use(express.urlencoded({ extended: true }))
+    .use(getDatas)
+    .use(getAddproduct)
     .use(router);
-    
 
-app.listen(PORT, ()=>{
-    console.log(`listening at http://localhost:${PORT}`);
+app.listen(PORT, (err) => {
+    err
+        ? console.log(err)
+        : console.log(`Listening at http://localhost:${PORT}`);
 });
